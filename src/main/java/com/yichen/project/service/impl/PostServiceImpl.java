@@ -3,6 +3,7 @@ package com.yichen.project.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yichen.project.common.ResultUtils;
 import com.yichen.project.constant.CommonConstant;
 import com.yichen.project.exception.BusinessException;
 import com.yichen.project.exception.ThrowUtils;
@@ -303,6 +304,15 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         }).collect(Collectors.toList());
         postVOPage.setRecords(postVOList);
         return postVOPage;
+    }
+
+    @Override
+    public Page<PostVO> listPostVOByPage(PostQueryRequest postQueryRequest, HttpServletRequest request) {
+        int current = postQueryRequest.getCurrent();
+        int size = postQueryRequest.getPageSize();
+        Page<Post> postPage = this.page(new Page<>(current, size),
+                this.getQueryWrapper(postQueryRequest));
+        return this.getPostVOPage(postPage, request);
     }
 
 }

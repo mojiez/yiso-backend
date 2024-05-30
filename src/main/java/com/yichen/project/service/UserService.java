@@ -1,6 +1,7 @@
 package com.yichen.project.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.yichen.project.model.vo.UserVO;
 import com.yichen.project.model.dto.user.UserQueryRequest;
@@ -119,4 +120,10 @@ public interface UserService extends IService<User> {
      */
     QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 
+    /**
+     * 搜索用户 分页查询
+     * @param userQueryRequest
+     * @return
+     */
+    Page<UserVO> listUserVOByPage(UserQueryRequest userQueryRequest);
 }
