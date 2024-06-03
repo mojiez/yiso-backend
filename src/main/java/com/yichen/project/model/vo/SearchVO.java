@@ -1,6 +1,7 @@
 package com.yichen.project.model.vo;
 
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
 import com.yichen.project.model.entity.Picture;
 import com.yichen.project.model.entity.Post;
@@ -25,5 +26,6 @@ public class SearchVO implements Serializable {
     List<UserVO> userVOList;
     List<PostVO> postVOList;
     List<Picture> pictureList;
+    List<Object> dataList;
     private static final long serialVersionUID = 1L;
 }
